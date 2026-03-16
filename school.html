@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثانوية الخلود للبنات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+            direction: rtl;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0.05)"/></linearGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23grad1)"/><circle cx="800" cy="400" r="200" fill="url(%23grad1)"/><circle cx="1000" cy="100" r="100" fill="url(%23grad1)"/><circle cx="500" cy="600" r="180" fill="url(%23grad1)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .news-ticker {
+            background: linear-gradient(90deg, #1a5276, #2c3e50, #1a5276);
+            color: #ffffff;
+            padding: 12px 0;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid #f39c12;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-ticker::before {
+            content: '📚';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        .news-ticker::after {
+            content: '🎓';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+        }
+
+        .school-title {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            margin: 30px auto;
+            width: 85%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-top: 5px solid #1a5276;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .school-title::before {
+            content: '🏫';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+
+        .school-title::after {
+            content: '✨';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            font-size: 40px;
+            opacity: 0.3;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        .school-title:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .school-title h2 {
+            color: #1a5276;
+            font-size: 32px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تنسيقات قائمة الصفوف الأفقية */
+        .main-menu {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(52, 152, 219, 0.2);
+            overflow: hidden;
+            margin: 30px auto;
+            width: 85%;
+            max-width: 1200px;
+        }
+
+        .menu-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .menu-section {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .menu-section h4 {
+            margin: 0 0 12px 0;
+            color: #2c3e50;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .menu-section a {
+            display: block;
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 0;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .menu-section a:hover {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .submenu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .submenu a {
+            font-size: 12px;
+            background: rgba(52, 152, 219, 0.05);
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .submenu a:hover {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-color: rgba(231, 76, 60, 0.3);
+        }
+
+        /* إخفاء السهم القديم */
+        .arrow {
+            display: none;
+        }
+
+        .studentPortalSection {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 5px solid #3498db;
+            margin: 40px auto;
+            width: 85%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        .studentPortalSection::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.3), transparent);
+            border-radius: 50%;
+        }
+
+        .studentPortalSection::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.3), transparent);
+            border-radius: 50%;
+        }
+
+        .studentPortalSection h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            color: #1a5276;
+            font-size: 28px;
+        }
+
+        .studentPortalSection h2::before {
+            content: '👤';
+            display: block;
+            font-size: 48px;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .studentLoginForm {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(249, 249, 249, 0.9));
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 550px;
+            margin: 0 auto;
+            border: 2px solid rgba(52, 152, 219, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .studentLoginForm h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 20px;
+        }
+
+        .studentLoginForm h3::before {
+            content: '🔐';
+            display: block;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .filter-group label span {
+            font-size: 24px;
+        }
+
+        .filter-group input[type="text"],
+        .filter-group input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #3498db !important;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+        }
+
+        .filter-group input:focus {
+            outline: none;
+            border-color: #3498db !important;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .export-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+        }
+
+        .loginMessage {
+            color: #e74c3c;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .studentDataSection {
+            display: none;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .studentDataSection h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #27ae60;
+            font-size: 24px;
+        }
+
+        .studentDataSection h2::before {
+            content: '✅';
+            display: block;
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 249, 249, 0.95));
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 2px solid rgba(52, 152, 219, 0.2);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .pass-input {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pass-input:focus {
+            outline: none;
+            border-color: #3498db !important;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+        }
+
+        .auth-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .auth-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط الأخبار -->
+    <div class="news-ticker">
+        <marquee direction="right" scrollamount="12">
+            وزارة التربية - المديرية العامة لتربية الانبار - قسم تربية الكرمة
+        </marquee>
+    </div>
+
+    <!-- عنوان المدرسة -->
+    <div class="school-title">
+        <h2>ثانوية الخلود للبنات</h2>
+    </div>
+
+    <!-- قائمة الصفوف الأفقية -->
+    <div class="main-menu">
+        <div class="menu-header">
+            🏫 الصفوف الدراسية
+        </div>
+        <div class="menu-content">
+            <div class="menu-section">
+                <h4>الصفوف المتوسطة</h4>
+                <a href="#" onclick="openAuthModal('class1.html.html')">📘 الصف الأول متوسط</a>
+                <a href="#" onclick="openAuthModal('class2.html.html')">📗 الصف الثاني متوسط</a>
+                <a href="#" onclick="openAuthModal('class3.html.html')">📙 الصف الثالث متوسط</a>
+            </div>
+            <div class="menu-section">
+                <h4>الصفوف الإعدادية</h4>
+                <a href="#" onclick="openAuthModal('class4.html.html')">📕 الصف الرابع الإعدادي</a>
+                <div class="submenu">
+                    <a href="#" onclick="openAuthModal('class5_science.html.html')">🔬 الخامس علمي</a>
+                    <a href="#" onclick="openAuthModal('class5_arts.html.html')">🎨 الخامس أدبي</a>
+                </div>
+                <div class="submenu">
+                    <a href="#" onclick="openAuthModal('class6_science.html.html')">🧪 السادس علمي</a>
+                    <a href="#" onclick="openAuthModal('class6_arts.html.html')">🖌️ السادس أدبي</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم الطلاب -->
+    <div class="studentPortalSection">
+        <h2>بوابة الطالب</h2>
+        <p style="color: #2c3e50; font-size: 18px; margin-bottom: 30px; text-align: center; font-weight: 500;">🎓 مرحباً بكِ في بوابة الطالبات - ثانوية الخلود للبنات</p>
+        
+        <div class="studentLoginForm">
+            <h3>تسجيل الدخول</h3>
+            
+            <div class="filter-group">
+                <label for="studentNameLogin">
+                    <span>👩‍🎓</span> اسم الطالبة:
+                </label>
+                <input type="text" id="studentNameLogin" placeholder="ادخل اسمك الكامل">
+            </div>
+
+            <div class="filter-group">
+                <label for="studentPasswordLogin">
+                    <span>🔢</span> كلمة السر:
+                </label>
+                <input type="password" id="studentPasswordLogin" placeholder="ادخل كلمة السر">
+            </div>
+
+            <button class="export-btn" onclick="handleStudentLogin()">
+                🔓 الدخول إلى البوابة
+            </button>
+            
+            <div id="loginMessage" class="loginMessage"></div>
+        </div>
+
+        <div id="studentDataSection" class="studentDataSection">
+            <h2>عرض درجات الطالبة</h2>
+            
+            <div class="student-info" style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.1)); padding: 20px; border-radius: 15px; border: 2px solid rgba(46, 204, 113, 0.3); margin-bottom: 25px; text-align: center;">
+                <h3 style="color: #27ae60; margin-bottom: 15px;">✅ تم تسجيل الدخول بنجاح!</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <span style="color: #7f8c8d; font-size: 14px;">🏫 المدرسة:</span>
+                        <p style="color: #2c3e50; font-weight: bold; margin: 5px 0;">ثانوية الخلود للبنات</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #7f8c8d; font-size: 14px;">👩‍🎓 الطالبة:</span>
+                        <p id="studentNameDisplay" style="color: #2c3e50; font-weight: bold; margin: 5px 0;">-</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #7f8c8d; font-size: 14px;">📚 الصف:</span>
+                        <p id="studentClassDisplay" style="color: #2c3e50; font-weight: bold; margin: 5px 0;">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <label for="schoolSelect">
+                    <span>🏫</span> اسم المدرسة:
+                </label>
+                <select id="schoolSelect">
+                    <option value="">-- اختر المدرسة --</option>
+                    <option value="ثانوية الخلود للبنات">ثانوية الخلود للبنات</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="classSelect">
+                    <span>📚</span> الصف:
+                </label>
+                <select id="classSelect">
+                    <option value="">-- اختر الصف --</option>
+                    <option value="class1">الصف الأول متوسط</option>
+                    <option value="class2">الصف الثاني متوسط</option>
+                    <option value="class3">الصف الثالث متوسط</option>
+                    <option value="class4">الصف الرابع الإعدادي</option>
+                    <option value="class5_science">الصف الخامس العلمي</option>
+                    <option value="class5_arts">الصف الخامس الأدبي</option>
+                    <option value="class6_science">الصف السادس العلمي</option>
+                    <option value="class6_arts">الصف السادس الأدبي</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="studentNameDisplay">
+                    <span>�‍🎓</span> اسم الطالبة:
+                </label>
+                <input type="text" id="studentNameDisplayInput" readonly style="background-color: #f8f9fa; color: #2c3e50; font-weight: bold;">
+            </div>
+
+            <div class="filter-group">
+                <label for="subjectSelect">
+                    <span>🔬</span> اسم المادة:
+                </label>
+                <select id="subjectSelect">
+                    <option value="">-- اختر المادة --</option>
+                    <option value="الاحياء">الاحياء</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="gradeTypeSelect">
+                    <span>📊</span> نوع الدرجة:
+                </label>
+                <select id="gradeTypeSelect">
+                    <option value="">-- اختر نوع الدرجة --</option>
+                    <option value="first_semester">الفصل الأول</option>
+                    <option value="half_year">نصف السنة</option>
+                    <option value="second_semester">الفصل الثاني</option>
+                    <option value="final_grade">الدرجة النهائية</option>
+                </select>
+            </div>
+
+            <button class="export-btn" onclick="showStudentGrades()">
+                📊 عرض الدرجات
+            </button>
+
+            <button class="export-btn" onclick="showStudentMaterials()" style="background: linear-gradient(135deg, #27ae60, #229954);">
+                📚 عرض الملازم
+            </button>
+
+            <div id="gradesResult" style="margin-top: 20px; padding: 20px; background: rgba(52, 152, 219, 0.1); border-radius: 10px; display: none;">
+                <h3 style="color: #2c3e50; margin-bottom: 15px;">📋 نتيجة البحث</h3>
+                <div id="gradesContent"></div>
+            </div>
+
+            <!-- قسم الملازم -->
+            <div id="materialsSection" style="margin-top: 30px; padding: 20px; background: rgba(46, 204, 113, 0.1); border-radius: 10px; display: none;">
+                <h3 style="color: #27ae60; margin-bottom: 20px;">📚 الملازم الدراسية</h3>
+                <div id="materialsContent" style="display: grid; gap: 15px;">
+                    <p style="color: #7f8c8d; text-align: center;">جاري تحميل الملازم...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إدخال الرمز السري -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+            <h3 style="color:#1a5276; margin-top:0;">🛡️ إذا كنت مديراً أدخل كلمة السر</h3>
+            <input type="password" id="adminPassword" placeholder="أدخل الرمز السري" class="pass-input">
+            <button class="auth-btn" onclick="verifyAdmin()">تسجيل الدخول</button>
+            <p id="errorMsg" style="color:red; display:none; margin:5px 0 0; font-size:14px;">الرمز غير صحيح!</p>
+        </div>
+    </div>
+
+    <script>
+        let targetUrl = '';
+
+        // إزالة دوال القائمة المنسدلة القديمة
+        function toggleDropdown(event) {
+            // لم تعد مستخدمة
+        }
+
+        // منع إغلاق القائمة عند الضغط على محتواها
+        // لم تعد مستخدمة
+
+        // إغلاق القائمة عند الضغط خارجها فقط
+        // لم تعد مستخدمة
+
+        function openAuthModal(url) {
+            targetUrl = url;
+            document.getElementById('authModal').style.display = 'flex';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('errorMsg').style.display = 'none';
+            document.getElementById('adminPassword').focus();
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        function verifyAdmin() {
+            const pass = document.getElementById('adminPassword').value;
+            if (pass === '4321') {
+                sessionStorage.setItem('userRole', 'admin');
+                window.location.href = targetUrl;
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+
+        function handleStudentLogin() {
+            console.log('=== بدء عملية تسجيل الدخول ===');
+            
+            try {
+                const nameInput = document.getElementById('studentNameLogin');
+                const passwordInput = document.getElementById('studentPasswordLogin');
+                const messageDiv = document.getElementById('loginMessage');
+                
+                console.log('العناصر:', {
+                    nameInput: !!nameInput,
+                    passwordInput: !!passwordInput,
+                    messageDiv: !!messageDiv
+                });
+                
+                if (!nameInput || !passwordInput || !messageDiv) {
+                    console.error('بعض العناصر غير موجودة');
+                    alert('حدث خطأ في النظام. يرجى تحديث الصفحة.');
+                    return;
+                }
+                
+                const name = nameInput.value.trim();
+                const password = passwordInput.value.trim();
+                
+                console.log('البيانات المدخلة:', { name, password });
+
+                if (!name || !password) {
+                    messageDiv.textContent = 'يرجى إدخال جميع الحقول';
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.color = '#e74c3c';
+                    console.log('حقول فارغة');
+                    return;
+                }
+
+                // البحث عن الطالبة في قاعدة البيانات
+                console.log('البحث عن الطالبة...');
+                const student = findStudent(name, password);
+                
+                if (!student) {
+                    messageDiv.textContent = 'اسم الطالبة أو كلمة السر غير صحيحة';
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.color = '#e74c3c';
+                    console.log('لم يتم العثور على الطالبة');
+                    return;
+                }
+
+                console.log('تم العثور على الطالبة:', student);
+
+                // تخزين بيانات الطالب
+                sessionStorage.setItem('studentName', student.name);
+                sessionStorage.setItem('studentClass', student.class);
+                sessionStorage.setItem('studentPassword', student.password);
+                sessionStorage.setItem('isLoggedIn', 'true');
+
+                // عرض معلومات الطالبة
+                const nameDisplay = document.getElementById('studentNameDisplay');
+                const classDisplay = document.getElementById('studentClassDisplay');
+                const nameDisplayInput = document.getElementById('studentNameDisplayInput');
+                
+                if (nameDisplay) nameDisplay.textContent = student.name;
+                if (classDisplay) classDisplay.textContent = student.className;
+                if (nameDisplayInput) nameDisplayInput.value = student.name;
+
+                // تعبئة الحقول تلقائياً
+                const schoolSelect = document.getElementById('schoolSelect');
+                const classSelect = document.getElementById('classSelect');
+                
+                if (schoolSelect) schoolSelect.value = 'ثانوية الخلود للبنات';
+                if (classSelect) classSelect.value = student.class;
+
+                console.log('تم تعبئة الحقول تلقائياً');
+
+                // تسجيل الدخول الناجح
+                messageDiv.style.display = 'none';
+                
+                const loginForm = document.getElementById('studentLoginForm');
+                const dataSection = document.getElementById('studentDataSection');
+                
+                if (loginForm) loginForm.style.display = 'none';
+                if (dataSection) dataSection.style.display = 'block';
+
+                console.log('تم تسجيل الدخول بنجاح');
+                
+            } catch (error) {
+                console.error('خطأ في تسجيل الدخول:', error);
+                alert('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
+            }
+        }
+
+        function validateStudentLogin() {
+            handleStudentLogin(); // إعادة توجيه للدالة الجديدة
+        }
+
+        function findStudent(name, password) {
+            console.log('بدء البحث عن الطالبة:', name);
+            
+            // البحث في جميع الكلاسات في localStorage
+            const classes = [
+                { key: 'class1_grades_v2', class: 'class1', className: 'الصف الأول متوسط' },
+                { key: 'class2_grades_v2', class: 'class2', className: 'الصف الثاني متوسط' },
+                { key: 'class3_grades_v2', class: 'class3', className: 'الصف الثالث متوسط' },
+                { key: 'class4_grades_v2', class: 'class4', className: 'الصف الرابع الإعدادي' },
+                { key: 'class5_science_grades_v2', class: 'class5_science', className: 'الصف الخامس العلمي' },
+                { key: 'class5_arts_grades_v2', class: 'class5_arts', className: 'الصف الخامس الأدبي' },
+                { key: 'class6_science_grades_v2', class: 'class6_science', className: 'الصف السادس العلمي' },
+                { key: 'class6_arts_grades_v2', class: 'class6_arts', className: 'الصف السادس الأدبي' }
+            ];
+
+            for (const classInfo of classes) {
+                try {
+                    console.log('البحث في:', classInfo.key);
+                    const students = JSON.parse(localStorage.getItem(classInfo.key) || '[]');
+                    console.log('عدد الطلاب في', classInfo.key, ':', students.length);
+                    
+                    const student = students.find(s => s.name === name && s.password === password);
+                    
+                    if (student) {
+                        console.log('تم العثور على الطالبة في:', classInfo.className);
+                        return {
+                            name: student.name,
+                            password: student.password,
+                            class: classInfo.class,
+                            className: classInfo.className,
+                            grades: student
+                        };
+                    }
+                } catch (e) {
+                    console.log('خطأ في قراءة', classInfo.key, ':', e);
+                    // تجاهل الأخطاء في قراءة localStorage
+                }
+            }
+
+            console.log('لم يتم العثور على الطالبة في أي كلاس');
+            return null;
+        }
+
+        function showStudentGrades() {
+            const school = document.getElementById('schoolSelect').value;
+            const classValue = document.getElementById('classSelect').value;
+            const subject = document.getElementById('subjectSelect').value;
+            const gradeType = document.getElementById('gradeTypeSelect').value;
+            const gradesResult = document.getElementById('gradesResult');
+            const gradesContent = document.getElementById('gradesContent');
+
+            if (!school || !classValue || !subject || !gradeType) {
+                gradesContent.innerHTML = '<p style="color: #e74c3c;">يرجى اختيار جميع الحقول</p>';
+                gradesResult.style.display = 'block';
+                return;
+            }
+
+            const studentName = sessionStorage.getItem('studentName');
+            const studentClass = sessionStorage.getItem('studentClass');
+
+            // التحقق من أن الطالب يمكنه عرض درجات هذا الصف فقط
+            if (studentClass !== classValue) {
+                gradesContent.innerHTML = '<p style="color: #e74c3c;">يمكنك فقط عرض درجات صفك الدراسي</p>';
+                gradesResult.style.display = 'block';
+                return;
+            }
+
+            // محاكاة البحث عن درجات الطالب
+            const grades = getStudentGrades(studentName, classValue, subject, gradeType);
+            
+            if (grades) {
+                gradesContent.innerHTML = `
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                        <h4 style="color: #27ae60; margin: 0 0 10px 0;">🎓 معلومات الطالبة</h4>
+                        <p style="margin: 5px 0;"><strong>🏫 المدرسة:</strong> ${grades.school}</p>
+                        <p style="margin: 5px 0;"><strong>👩‍🎓 الطالبة:</strong> ${grades.name}</p>
+                        <p style="margin: 5px 0;"><strong>📚 الصف:</strong> ${grades.className}</p>
+                    </div>
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 10px;">
+                        <h4 style="color: #3498db; margin: 0 0 10px 0;">📊 نتيجة الدرجة</h4>
+                        <p style="margin: 5px 0;"><strong>📖 المادة:</strong> ${grades.subject}</p>
+                        <p style="margin: 5px 0;"><strong>� ${grades.gradeType}:</strong> <span style="font-size: 18px; font-weight: bold; color: #3498db;">${grades.grade}</span></p>
+                        <p style="margin: 10px 0 0 0; color: #7f8c8d; font-size: 14px;">📅 تاريخ العرض: ${new Date().toLocaleDateString('ar-EG')}</p>
+                    </div>
+                `;
+            } else {
+                gradesContent.innerHTML = `
+                    <p style="color: #e74c3c;">لم يتم العثور على درجات للطالبة</p>
+                    <p style="color: #7f8c8d; font-size: 14px;">يرجى التأكد من البيانات المدخلة أو التواصل مع الإدارة</p>
+                `;
+            }
+
+            gradesResult.style.display = 'block';
+        }
+
+        function getStudentGrades(name, classValue, subject, gradeType) {
+            // محاكاة قاعدة بيانات الدرجات
+            const gradeTypes = {
+                'first_semester': 'الفصل الأول',
+                'half_year': 'نصف السنة',
+                'second_semester': 'الفصل الثاني',
+                'final_grade': 'الدرجة النهائية'
+            };
+
+            const classNames = {
+                'class1': 'الصف الأول متوسط',
+                'class2': 'الصف الثاني متوسط',
+                'class3': 'الصف الثالث متوسط',
+                'class4': 'الصف الرابع الإعدادي',
+                'class5_science': 'الصف الخامس العلمي',
+                'class5_arts': 'الصف الخامس الأدبي',
+                'class6_science': 'الصف السادس العلمي',
+                'class6_arts': 'الصف السادس الأدبي'
+            };
+
+            // البحث عن الطالبة في localStorage للحصول على درجاتها الحقيقية
+            const classKeys = {
+                'class1': 'class1_grades_v2',
+                'class2': 'class2_grades_v2',
+                'class3': 'class3_grades_v2',
+                'class4': 'class4_grades_v2',
+                'class5_science': 'class5_science_grades_v2',
+                'class5_arts': 'class5_arts_grades_v2',
+                'class6_science': 'class6_science_grades_v2',
+                'class6_arts': 'class6_arts_grades_v2'
+            };
+
+            try {
+                const students = JSON.parse(localStorage.getItem(classKeys[classValue]) || '[]');
+                const student = students.find(s => s.name === name);
+                
+                if (student && subject === 'الاحياء') {
+                    // استخراج الدرجة المناسبة من بيانات الطالب
+                    let grade = 'غير متوفر';
+                    
+                    switch(gradeType) {
+                        case 'first_semester':
+                            grade = student.r1 || 'غير متوفر';
+                            break;
+                        case 'half_year':
+                            grade = student.halfYear || 'غير متوفر';
+                            break;
+                        case 'second_semester':
+                            grade = student.r2 || 'غير متوفر';
+                            break;
+                        case 'final_grade':
+                            grade = student.final || 'غير متوفر';
+                            break;
+                    }
+
+                    return {
+                        name: name,
+                        className: classNames[classValue],
+                        school: 'ثانوية الخلود للبنات',
+                        subject: subject,
+                        gradeType: gradeTypes[gradeType],
+                        grade: grade
+                    };
+                }
+            } catch (e) {
+                // في حالة الخطأ، إرجاع قيمة افتراضية
+            }
+
+            return null;
+        }
+
+        // إضافة بيانات تجريبية للاختبار
+        function addTestData() {
+            console.log('إضافة بيانات تجريبية...');
+            
+            const testData = [
+                { name: 'فاطمة محمد', password: '1234', m1: 85, d1: 90, r1: 87.5, m2: 88, d2: 92, r2: 90, final: 88.8 },
+                { name: 'عائشة أحمد', password: '5678', m1: 90, d1: 85, r1: 87.5, m2: 92, d2: 88, r2: 90, final: 88.8 }
+            ];
+            
+            localStorage.setItem('class1_grades_v2', JSON.stringify(testData));
+            console.log('تم إضافة بيانات تجريبية لـ class1_grades_v2');
+            
+            // التحقق من الإضافة
+            const checkData = localStorage.getItem('class1_grades_v2');
+            console.log('البيانات بعد الإضافة:', checkData);
+        }
+
+        // استدعاء الدالة عند تحميل الصفحة للاختبار
+        window.addEventListener('load', function() {
+            console.log('=== تحميل الصفحة ===');
+            
+            // التحقق من وجود بيانات
+            const existingData = localStorage.getItem('class1_grades_v2');
+            console.log('البيانات الموجودة:', existingData);
+            
+            if (!existingData) {
+                addTestData();
+            } else {
+                console.log('البيانات موجودة بالفعل');
+            }
+            
+            // التحقق من العناصر
+            setTimeout(function() {
+                console.log('التحقق من العناصر بعد تحميل الصفحة:');
+                console.log('studentNameLogin:', !!document.getElementById('studentNameLogin'));
+                console.log('studentPasswordLogin:', !!document.getElementById('studentPasswordLogin'));
+                console.log('loginMessage:', !!document.getElementById('loginMessage'));
+                console.log('studentDataSection:', !!document.getElementById('studentDataSection'));
+            }, 1000);
+        });
+
+        // إغلاق النافذة عند الضغط خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('authModal');
+            if (event.target == modal) {
+                closeAuthModal();
+            }
+        }
+
+        // إغلاق النافذة عند الضغط على ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAuthModal();
+            }
+        });
+
+        // دالة عرض الملازم للطالب
+        function showStudentMaterials() {
+            const studentClass = sessionStorage.getItem('studentClass');
+            const materialsSection = document.getElementById('materialsSection');
+            const materialsContent = document.getElementById('materialsContent');
+            const gradesResult = document.getElementById('gradesResult');
+            
+            // إخفاء قسم الدرجات
+            if (gradesResult) {
+                gradesResult.style.display = 'none';
+            }
+            
+            if (!studentClass) {
+                materialsContent.innerHTML = '<p style="color: #e74c3c; text-align: center;">يرجى تسجيل الدخول أولاً</p>';
+                materialsSection.style.display = 'block';
+                return;
+            }
+            
+            // الحصول على الملازم الخاصة بالصف
+            const materialsKey = `${studentClass}_materials`;
+            let materials = [];
+            
+            try {
+                materials = JSON.parse(localStorage.getItem(materialsKey) || '[]');
+            } catch (e) {
+                console.error('خطأ في قراءة الملازم:', e);
+                materials = [];
+            }
+            
+            if (materials.length === 0) {
+                materialsContent.innerHTML = `
+                    <div style="text-align: center; padding: 30px; background: rgba(231, 76, 60, 0.1); border-radius: 10px; border: 2px dashed rgba(231, 76, 60, 0.3);">
+                        <p style="color: #e74c3c; font-size: 18px; margin-bottom: 10px;">📚 لا توجد ملازم متاحة حالياً</p>
+                        <p style="color: #7f8c8d; font-size: 14px;">سيتم إضافة الملازم قريباً من قبل الإدارة</p>
+                    </div>
+                `;
+            } else {
+                // ترتيب الملازم حسب التاريخ (الأحدث أولاً)
+                materials.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                let materialsHTML = '<div style="display: grid; gap: 20px;">';
+                
+                materials.forEach((material, index) => {
+                    const date = new Date(material.timestamp).toLocaleDateString('ar-EG');
+                    const time = new Date(material.timestamp).toLocaleTimeString('ar-EG');
+                    
+                    materialsHTML += `
+                        <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid rgba(46, 204, 113, 0.2); transition: all 0.3s ease; position: relative;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px;">
+                                <h4 style="color: #27ae60; margin: 0; font-size: 18px;">📚 المادة ${index + 1}</h4>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #7f8c8d; font-size: 12px; background: #ecf0f1; padding: 5px 10px; border-radius: 20px;">${date} - ${time}</span>
+                                    <button onclick="requestDeleteMaterial('${studentClass}', ${material.id})" style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px; box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3); transition: all 0.3s ease;">
+                                        🗑️ حذف
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            ${material.content ? `
+                                <div style="margin-bottom: 15px;">
+                                    <h5 style="color: #2c3e50; margin-bottom: 10px;">📝 المحتوى:</h5>
+                                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-right: 4px solid #27ae60; line-height: 1.6;">
+                                        ${material.content.replace(/\n/g, '<br>')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                ${material.pdfFile ? `
+                                    <div style="text-align: center;">
+                                        <h5 style="color: #e74c3c; margin-bottom: 10px;">📄 ملف PDF:</h5>
+                                        <button onclick="downloadMaterial('${studentClass}', '${material.id}', 'pdf')" style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);">
+                                            📥 تحميل ${material.pdfFile}
+                                        </button>
+                                    </div>
+                                ` : ''}
+                                
+                                ${material.imageFile ? `
+                                    <div style="text-align: center;">
+                                        <h5 style="color: #3498db; margin-bottom: 10px;">🖼️ صورة:</h5>
+                                        <div style="margin-bottom: 10px;">
+                                            <img src="${localStorage.getItem(`${studentClass}_material_image_${material.id}`)}" alt="${material.imageFile}" style="max-width: 100%; max-height: 200px; border-radius: 8px; box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2); cursor: pointer;" onclick="viewImage('${studentClass}', '${material.id}')">
+                                        </div>
+                                        <button onclick="downloadMaterial('${studentClass}', '${material.id}', 'image')" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);">
+                                            📥 تحميل ${material.imageFile}
+                                        </button>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                materialsHTML += '</div>';
+                materialsContent.innerHTML = materialsHTML;
+            }
+            
+            materialsSection.style.display = 'block';
+        }
+
+        // دالة تحميل الملف
+        function downloadMaterial(className, materialId, type) {
+            try {
+                let dataUrl;
+                let fileName;
+                
+                if (type === 'pdf') {
+                    dataUrl = localStorage.getItem(`${className}_material_pdf_${materialId}`);
+                    fileName = `material_${materialId}.pdf`;
+                } else if (type === 'image') {
+                    dataUrl = localStorage.getItem(`${className}_material_image_${materialId}`);
+                    // استخراج اسم الملف من البيانات
+                    const materials = JSON.parse(localStorage.getItem(`${className}_materials`) || '[]');
+                    const material = materials.find(m => m.id == materialId);
+                    fileName = material ? material.imageFile : `image_${materialId}`;
+                }
+                
+                if (dataUrl) {
+                    const link = document.createElement('a');
+                    link.href = dataUrl;
+                    link.download = fileName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    alert('الملف غير متوفر');
+                }
+            } catch (e) {
+                console.error('خطأ في تحميل الملف:', e);
+                alert('حدث خطأ أثناء تحميل الملف');
+            }
+        }
+
+        // دالة عرض الصورة في نافذة جديدة
+        function viewImage(className, materialId) {
+            try {
+                const dataUrl = localStorage.getItem(`${className}_material_image_${materialId}`);
+                if (dataUrl) {
+                    const newWindow = window.open('', '_blank');
+                    newWindow.document.write(`
+                        <html dir="rtl">
+                        <head>
+                            <title>عرض الصورة</title>
+                            <style>
+                                body { margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f5f5f5; }
+                                img { max-width: 100%; max-height: 90vh; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+                            </style>
+                        </head>
+                        <body>
+                            <img src="${dataUrl}" alt="صورة المادة">
+                        </body>
+                        </html>
+                    `);
+                } else {
+                    alert('الصورة غير متوفرة');
+                }
+            } catch (e) {
+                console.error('خطأ في عرض الصورة:', e);
+                alert('حدث خطأ أثناء عرض الصورة');
+            }
+        }
+
+        // دالة طلب حذف مادة معينة
+        function requestDeleteMaterial(className, materialId) {
+            // عرض نافذة إدخال كلمة سر المدير
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; position: relative;">
+                    <h3 style="color: #e74c3c; text-align: center; margin-bottom: 20px;">🗑️ حذف المادة</h3>
+                    <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 10px; right: 10px; background: #95a5a6; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">✕</button>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 10px; color: #2c3e50; font-weight: bold;">🔐 كلمة سر المدير:</label>
+                        <input type="password" id="deleteAdminPassword" placeholder="أدخل كلمة سر المدير" style="width: 100%; padding: 12px; border: 2px solid #e74c3c; border-radius: 8px; font-size: 16px; text-align: center;">
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button onclick="verifyAndDeleteMaterial('${className}', ${materialId})" style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            🗑️ حذف المادة
+                        </button>
+                        <button onclick="this.parentElement.parentElement.remove()" style="background: #95a5a6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            إلغاء
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            document.getElementById('deleteAdminPassword').focus();
+        }
+
+        // دالة التحقق من كلمة السر وحذف المادة
+        function verifyAndDeleteMaterial(className, materialId) {
+            const password = document.getElementById('deleteAdminPassword').value;
+            
+            if (password === '4321') {
+                // كلمة المرور صحيحة - حذف المادة
+                document.getElementById('deleteAdminPassword').parentElement.parentElement.remove();
+                deleteMaterial(className, materialId);
+            } else {
+                // كلمة المرور غير صحيحة
+                const input = document.getElementById('deleteAdminPassword');
+                input.style.borderColor = '#e74c3c';
+                input.value = '';
+                input.placeholder = 'كلمة المرور غير صحيحة!';
+                setTimeout(() => {
+                    input.style.borderColor = '#e74c3c';
+                    input.placeholder = 'أدخل كلمة سر المدير';
+                }, 2000);
+            }
+        }
+        function showDeleteMaterialOption() {
+            const studentClass = sessionStorage.getItem('studentClass');
+            
+            if (!studentClass) {
+                alert('يرجى تسجيل الدخول أولاً');
+                return;
+            }
+
+            // عرض نافذة إدخال كلمة سر المدير
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; position: relative;">
+                    <h3 style="color: #e74c3c; text-align: center; margin-bottom: 20px;">🗑️ حذف المادة</h3>
+                    <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 10px; right: 10px; background: #95a5a6; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">✕</button>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 10px; color: #2c3e50; font-weight: bold;">🔐 كلمة سر المدير:</label>
+                        <input type="password" id="deleteAdminPassword" placeholder="أدخل كلمة سر المدير" style="width: 100%; padding: 12px; border: 2px solid #e74c3c; border-radius: 8px; font-size: 16px; text-align: center;">
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button onclick="verifyDeletePassword()" style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            🗑️ حذف المادة
+                        </button>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #95a5a6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            إلغاء
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            document.getElementById('deleteAdminPassword').focus();
+        }
+
+        // دالة التحقق من كلمة سر المدير للحذف
+        function verifyDeletePassword() {
+            const password = document.getElementById('deleteAdminPassword').value;
+            
+            if (password === '4321') {
+                // كلمة المرور صحيحة - عرض قائمة الملازم للحذف
+                document.getElementById('deleteAdminPassword').parentElement.parentElement.remove();
+                showMaterialsForDeletion();
+            } else {
+                // كلمة المرور غير صحيحة
+                const input = document.getElementById('deleteAdminPassword');
+                input.style.borderColor = '#e74c3c';
+                input.value = '';
+                input.placeholder = 'كلمة المرور غير صحيحة!';
+                setTimeout(() => {
+                    input.style.borderColor = '#e74c3c';
+                    input.placeholder = 'أدخل كلمة سر المدير';
+                }, 2000);
+            }
+        }
+
+        // دالة عرض الملازم المتاحة للحذف
+        function showMaterialsForDeletion() {
+            const studentClass = sessionStorage.getItem('studentClass');
+            const materialsKey = `${studentClass}_materials`;
+            let materials = [];
+            
+            try {
+                materials = JSON.parse(localStorage.getItem(materialsKey) || '[]');
+            } catch (e) {
+                console.error('خطأ في قراءة الملازم:', e);
+                materials = [];
+            }
+            
+            if (materials.length === 0) {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10000;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center;">
+                        <h3 style="color: #f39c12; margin-bottom: 20px;">📚 لا توجد ملازم للحذف</h3>
+                        <p style="color: #7f8c8d; margin-bottom: 20px;">لا توجد مواد محفوظة في هذا الصف حالياً</p>
+                        <button onclick="this.parentElement.parentElement.remove()" style="background: #95a5a6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            موافق
+                        </button>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                return;
+            }
+            
+            // ترتيب الملازم حسب التاريخ (الأحدث أولاً)
+            materials.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            `;
+            
+            let materialsHTML = '<div style="background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">';
+            materialsHTML += '<h3 style="color: #e74c3c; text-align: center; margin-bottom: 20px;">🗑️ اختر المادة للحذف</h3>';
+            materialsHTML += '<button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 10px; right: 10px; background: #95a5a6; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">✕</button>';
+            materialsHTML += '<div style="display: grid; gap: 15px;">';
+            
+            materials.forEach((material, index) => {
+                const date = new Date(material.timestamp).toLocaleDateString('ar-EG');
+                const time = new Date(material.timestamp).toLocaleTimeString('ar-EG');
+                
+                materialsHTML += `
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; border: 2px solid #e74c3c; border-right: 5px solid #e74c3c;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h4 style="color: #2c3e50; margin: 0;">📚 المادة ${index + 1}</h4>
+                            <span style="color: #7f8c8d; font-size: 12px; background: #ecf0f1; padding: 5px 10px; border-radius: 20px;">${date} - ${time}</span>
+                        </div>
+                        
+                        ${material.content ? `
+                            <div style="margin-bottom: 10px;">
+                                <p style="color: #2c3e50; margin: 0; font-size: 14px;">
+                                    ${material.content.substring(0, 100)}${material.content.length > 100 ? '...' : ''}
+                                </p>
+                            </div>
+                        ` : ''}
+                        
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            ${material.pdfFile ? `<span style="color: #e74c3c; font-size: 12px;">📄 ${material.pdfFile}</span>` : ''}
+                            ${material.imageFile ? `<span style="color: #3498db; font-size: 12px;">🖼️ ${material.imageFile}</span>` : ''}
+                        </div>
+                        
+                        <div style="margin-top: 10px; text-align: left;">
+                            <button onclick="deleteMaterial('${studentClass}', ${material.id})" style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">
+                                🗑️ حذف
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            materialsHTML += '</div></div>';
+            modal.innerHTML = materialsHTML;
+            document.body.appendChild(modal);
+        }
+
+        // دالة حذف المادة
+        function deleteMaterial(className, materialId) {
+            if (confirm('هل أنت متأكد من حذف هذه المادة؟ لا يمكن التراجع عن هذا الإجراء.')) {
+                try {
+                    // حذف المادة من قائمة المواد
+                    const materialsKey = `${className}_materials`;
+                    let materials = JSON.parse(localStorage.getItem(materialsKey) || '[]');
+                    materials = materials.filter(m => m.id !== materialId);
+                    localStorage.setItem(materialsKey, JSON.stringify(materials));
+                    
+                    // حذف الملفات المرتبطة
+                    localStorage.removeItem(`${className}_material_pdf_${materialId}`);
+                    localStorage.removeItem(`${className}_material_image_${materialId}`);
+                    
+                    // إغلاق جميع النوافذ المفتوحة
+                    const allModals = document.querySelectorAll('[style*="position: fixed"]');
+                    allModals.forEach(modal => {
+                        if (modal.style.zIndex === '10000' || modal.style.background.includes('rgba(0, 0, 0, 0.8)')) {
+                            modal.remove();
+                        }
+                    });
+                    
+                    // تحديث الواجهة
+                    alert('تم حذف المادة بنجاح!');
+                    
+                    // إذا كان قسم الملازم مفتوحاً، تحديثه
+                    if (document.getElementById('materialsSection').style.display === 'block') {
+                        showStudentMaterials();
+                    }
+                } catch (e) {
+                    console.error('خطأ في حذف المادة:', e);
+                    alert('حدث خطأ أثناء حذف المادة');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
